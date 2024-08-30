@@ -1,0 +1,60 @@
+<odoo>
+    <record id="view_hotel_booking_tree" model="ir.ui.view">
+        <field name="name">hotel.booking.tree</field>
+        <field name="model">hotel.booking</field> 
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="room_id"/>
+                <field name="check_in_date"/>
+                <field name="check_out_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hotel_booking_form" model="ir.ui.view">
+        <field name="name">hotel.booking.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="customer_id"/>
+                    <field name="room_id"/>
+                </group>
+                <group>
+                    <field name="check_in_date"/>
+                    <field name="check_out_date"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_booking_calendar" model="ir.ui.view">
+        <field name="name">hotel.booking.calendar</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <calendar string="Hotel Bookings"
+                      date_start="check_in_date"
+                      date_stop="check_out_date">
+                <field name="customer_id"/>
+                <field name="room_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="hotel_management_booking_action" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">hotel.booking</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage your bookings
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hotel_management_root" name="Hotel Management" />
+
+    <menuitem id="hotel_management_menu_bookings" name="Bookings" parent="hotel_management_root" action="hotel_management_booking_action"/>
+
+</odoo>

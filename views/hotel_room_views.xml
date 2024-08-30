@@ -1,0 +1,83 @@
+<odoo>
+    <record id="view_hotel_room_tree" model="ir.ui.view">
+        <field name="name">hotel.room.tree</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="floor_id"/>
+                <field name="room_type"/>
+                <field name="price"/>
+                <field name="availability"/>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator" name="booking_ids"/>
+                <field name="room_image" widget='image'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hotel_room_form" model="ir.ui.view">
+        <field name="name">hotel.room.form</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="floor_id"/>
+                </group>
+                <group>
+                    <field name="room_type"/>
+                    <field name="price"/>
+                    <field name="availability"/>
+                    <field groups="HOTEL_MANAGEMENT.group_hotel_administrator" name="booking_ids"/>
+                    <field name="room_image" widget='image'/>
+                </group>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_hotel_room_kanban" model="ir.ui.view">
+        <field name="name">hotel.room.kanban</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="floor_id"/>
+                <field name="room_type"/>
+                <field name="price"/>
+                <field name="availability"/>
+                <field name="room_image" widget='image'/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click oe_kanban_card oe_kanban_{availability}">
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <div><field name="room_type"/></div>
+                                <div><field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/></div>
+                                <div t-attf-class="oe_kanban_inline oe_kanban_{availability}">
+                                    <span class="badge" t-esc="record.availability.value"/>
+                                </div>
+                                <div><field name="room_image" widget='image'></field></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hotel_management_room_action" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="res_model">hotel.room</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_hotel_room_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage the rooms of your hotel
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hotel_management_root" name="Hotel Management" web_icon="HOTEL_MANAGEMENT,static/description/icon.png"/>
+    <menuitem id="hotel_management_menu_rooms" name="Rooms" parent="hotel_management_root" action="hotel_management_room_action"/>
+</odoo>

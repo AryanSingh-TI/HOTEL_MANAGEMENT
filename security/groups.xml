@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Administrator Group -->
+    <record id="group_hotel_administrator" model="res.groups">
+        <field name="name">Hotel Administrator</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <!-- Customer Group -->
+    <record id="group_hotel_customer" model="res.groups">
+        <field name="name">Hotel Customer</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+</odoo>

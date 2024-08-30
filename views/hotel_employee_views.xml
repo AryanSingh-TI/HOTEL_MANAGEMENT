@@ -1,0 +1,50 @@
+<odoo>
+    <!-- Views for Hotel Bookings -->
+    <record id="view_hotel_employee_tree" model="ir.ui.view">
+        <field name="name">hotel.employees.tree</field>
+        <field name="model">hotel.employees</field> 
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="default_salary"/>
+                <field name="role_id"/>
+                <field name="sub_role_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hotel_employee_form" model="ir.ui.view">
+        <field name="name">hotel.employees.form</field>
+        <field name="model">hotel.employees</field> 
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="default_salary"/>
+                </group>
+                <group>
+                    <field name="role_id"/>
+                    <field name="sub_role_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Bookings -->
+    <record id="hotel_management_employee_action" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">hotel.employees</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hotel_employee_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage your bookings
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hotel_management_root" name="Hotel Management" />
+
+    <menuitem id="hotel_management_menu_employees" name="Employee" parent="hotel_management_root" action="hotel_management_employee_action"/>
+
+</odoo>

@@ -1,0 +1,67 @@
+<odoo>
+
+    <record id="view_hotel_floor_tree" model="ir.ui.view">
+        <field name="name">hotel.floor.tree</field>
+        <field name="model">hotel.floor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hotel_floor_form" model="ir.ui.view">
+        <field name="name">hotel.floor.form</field>
+        <field name="model">hotel.floor</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                </group>
+                <group>
+                    <field name="room_ids"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hotel_floor_kanban" model="ir.ui.view">
+    <field name="name">hotel.floor.kanban</field>
+    <field name="model">hotel.floor</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="name"/>
+            <field name="room_count"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <strong><field name="name"/></strong>
+                        <div>
+                            <span>
+                                <t t-esc="record.room_count.raw_value"/> rooms
+                            </span>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+    
+    <record id="hotel_management_floor_action" model="ir.actions.act_window">
+        <field name="name">Floors</field>
+        <field name="res_model">hotel.floor</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="view_hotel_floor_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage the floors of your hotel
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hotel_management_root" name="Hotel Management" />
+
+    <menuitem id="hotel_management_menu_floors" name="Floors" parent="hotel_management_root" action="hotel_management_floor_action"/>
+</odoo>

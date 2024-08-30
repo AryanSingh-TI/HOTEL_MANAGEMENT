@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="employee_aryan" model="hotel.employees">
+            <field name="name">Aryan</field>
+            <field name="default_salary">50000.00</field>
+            <field name="role_id">managers</field>
+            <field name="sub_role_id">head_manager</field>
+        </record>
+
+        <record id="employee_nikhil" model="hotel.employees">
+            <field name="name">Nikhil</field>
+            <field name="default_salary">15000.00</field>
+            <field name="role_id">security</field>
+            <field name="sub_role_id">security_guard</field>
+        </record>
+
+        <record id="employee_harshak" model="hotel.employees">
+            <field name="name">Harshak</field>
+            <field name="default_salary">35000.00</field>
+            <field name="role_id">restaurant_staff</field>
+            <field name="sub_role_id">chef</field>
+        </record>
+
+        <record id="employee_vastav" model="hotel.employees">
+            <field name="name">Vastav</field>
+            <field name="default_salary">20000.00</field>
+            <field name="role_id">restaurant_staff</field>
+            <field name="sub_role_id">waiter</field>
+        </record>
+
+        <record id="employee_harsh" model="hotel.employees">
+            <field name="name">Harsh</field>
+            <field name="default_salary">22000.00</field>
+            <field name="role_id">regular_staff</field>
+            <field name="sub_role_id">housekeeping</field>
+        </record>
+
+        <record id="employee_breaking" model="hotel.employees">
+            <field name="name">Breaking Bad</field>
+            <field name="default_salary">28000.00</field>
+            <field name="role_id">regular_staff</field>
+            <field name="sub_role_id">receptionist</field>
+        </record>
+</odoo>
