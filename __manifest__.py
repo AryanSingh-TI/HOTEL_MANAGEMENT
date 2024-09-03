@@ -14,6 +14,7 @@
     'views/hotel_floor_views.xml',
     'views/hotel_room_views.xml',
     'views/hotel_employee_views.xml',
+    'views/hotel_todo_views.xml',
     'data/hotel_employees.xml'
-    ]
+    ] 
 }

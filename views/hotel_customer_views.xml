@@ -6,6 +6,7 @@
             <tree>
                 <field name="name"/>
                 <field name="contact_info"/>
+                <field name="booking_ids"/>
             </tree>
         </field>
     </record>
@@ -18,6 +19,7 @@
                 <group>
                     <field name="name"/>
                     <field name="contact_info"/>
+                    <field name="booking_ids"/>
                 </group>
             </form>
         </field>

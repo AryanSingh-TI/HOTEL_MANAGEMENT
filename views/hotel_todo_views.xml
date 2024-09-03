@@ -1,0 +1,56 @@
+<odoo>
+
+    <record id="view_hotel_todo_form" model="ir.ui.view">
+        <field name="name">hotel.todo.form</field>
+        <field name="model">hotel.todo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="assigned_employee_id"/>
+                        <field name="start_date"/>
+                        <field name="due_date"/>
+                        <field name="is_done"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_hotel_todo_tree" model="ir.ui.view">
+        <field name="name">hotel.todo.tree</field>
+        <field name="model">hotel.todo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="assigned_employee_id"/>
+                <field name="start_date"/>
+                <field name="due_date"/>
+                <field name="is_done"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hotel_todo_calendar" model="ir.ui.view">
+        <field name="name">hotel.todo.calendar</field>
+        <field name="model">hotel.todo</field>
+        <field name="arch" type="xml">
+            <calendar string="To-Do Calendar" date_start="start_date" date_stop="due_date">
+                <field name="name"/>
+                <field name="due_date"/>
+                <field name="assigned_employee_id"/>
+                <field name="is_done"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="action_hotel_todo_calendar" model="ir.actions.act_window">
+        <field name="name">To-Do Calendar</field>
+        <field name="res_model">hotel.todo</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="view_id" ref="view_hotel_todo_calendar"/>
+    </record>
+
+    <menuitem id="menu_hotel_todo_calendar" name="To-Do Calendar" action="action_hotel_todo_calendar" parent="hotel_management_root"/>
+</odoo>

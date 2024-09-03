@@ -6,3 +6,4 @@ access_hotel_room_user,hotel_room_user,model_hotel_room,group_hotel_customer,1,0
 access_hotel_customer_admin,hotel_customer_administrator,model_hotel_customer,group_hotel_administrator,1,1,1,1
 access_hotel_booking_admin,hotel_booking_administrator,model_hotel_booking,group_hotel_administrator,1,1,1,1
 access_hotel_employees,access_hotel_employees,model_hotel_employees,group_hotel_administrator,1,1,1,1
+access_hotel_todo,access_hotel_todo,model_hotel_todo,group_hotel_administrator,1,1,1,1

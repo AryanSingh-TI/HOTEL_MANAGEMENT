@@ -3,6 +3,7 @@ from odoo import models, fields , api , _
 class HotelRoom(models.Model):
     _name = 'hotel.room'
     _description = 'Hotel Room'
+ 
 
     name = fields.Char(string='Room Number', required=True)
     floor_id = fields.Many2one('hotel.floor', string='Floor', required=True)
@@ -11,22 +12,24 @@ class HotelRoom(models.Model):
         ('double', 'Double'),
         ('suite', 'Suite')
     ], string='Room Type', required=True)
-    price = fields.Float(string='Price per Night', required=True)
+    price = fields.Monetary(string='Price per Day', required=True, currency_field='currency_id')
     availability = fields.Selection([
         ('available', 'Available'),
         ('occupied', 'Occupied')
-    ], string='Availability', default='available', required=True)
+    ], string='Availability', compute='_compute_availability')
 
-    booking_ids = fields.One2many('hotel.booking','room_id',string="Bookings")
+    booking_ids = fields.One2many('hotel.booking','room_id',string="Bookings",readonly=True)
 
     room_image = fields.Binary(string = "Room Image")
+    currency_id = fields.Many2one('res.currency', string='Currency')
 
-    @api.depends('booking_ids.check_in_date')
+    @api.depends('booking_ids.check_in_date','booking_ids.check_out_date')
     def _compute_availability(self):
+        today = fields.Date.today()
         for room in self:
+            room.availability = 'available'
+            for booking in room.booking_ids:
+                if booking.check_in_date <= today and today <= booking.check_out_date:
+                    room.availability = 'occupied'
+                    break
         
-            nearest_check_in = min(room.booking_ids.mapped('check_in_date'), default=None)
-            if nearest_check_in and nearest_check_in > date.today():
-                room.availability = f"Available until {nearest_check_in.strftime('%Y-%m-%d')}"
-            else:
-                room.availability = "Available"
