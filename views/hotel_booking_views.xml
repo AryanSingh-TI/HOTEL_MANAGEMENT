@@ -19,16 +19,26 @@
         <field name="model">hotel.booking</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                    <field name="customer_id"/>
-                    <field name="room_id"/>
-                </group>
-                <group>
-                    <field name="check_in_date"/>
-                    <field name="check_out_date"/>
-                    <field name="days_count"/>
-                    <field name="total_booking_price"/>
-                </group>
+            <notebook>
+            <page string="Booking Details">
+            <group>
+                <field name="customer_id" class="form-control" placeholder="Enter the Customer Name"/>
+                <field name="room_id" class="form-control" placeholder="Enter the Room Name"/>
+            </group>
+            </page>
+            <page string="Booking Dates">
+            <group>
+                <field name="check_in_date"  class="form-control" placeholder="Enter the Check-In-Date"/>
+                <field name="check_out_date" class="form-control" placeholder="Enter the Check-Out-Date"/>
+            </group>
+            </page>
+            <page string="Days and Pricing">
+            <group>
+                <field name="days_count" class="form-control"/>
+                <field name="total_booking_price" class="form-control"/>
+            </group>
+            </page>
+            </notebook>
             </form>
         </field>
     </record>

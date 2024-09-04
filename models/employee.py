@@ -24,3 +24,16 @@ class HotelEmployee(models.Model):
         ('housekeeping', 'Housekeeping'),
         ('receptionist', 'Receptionist')
     ], string='Sub Role')
+    
+    
+    ratings = fields.Selection([
+            ('0', 'Low'),
+            ('1', 'Moderate'),
+            ('2', 'High'),
+            ('3', 'Very High')
+        ], string="Performance Rating", default='0')
+    
+    employee_document = fields.Binary(string='Employee Document')
+
+
+    

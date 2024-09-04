@@ -1,0 +1,11 @@
+/* Available room styles */
+.oe_kanban_available {
+    border: 2px solid green;
+    background-color: #e0f7e0;
+}
+
+/* Occupied room styles */
+.oe_kanban_occupied {
+    border: 2px solid red;
+    background-color: #f7e0e0;
+}

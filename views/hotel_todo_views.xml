@@ -9,10 +9,10 @@
                     <group>
                         <field name="name"/>
                         <field name="description"/>
-                        <field name="assigned_employee_id"/>
+                        <field name="assigned_employee_id" widget="many2many_checkboxes"/>
                         <field name="start_date"/>
                         <field name="due_date"/>
-                        <field name="is_done"/>
+                        <field name="is_done" widget="boolean_toggle"/>
                     </group>
                 </sheet>
             </form>
@@ -24,10 +24,10 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="assigned_employee_id"/>
+                <field name="assigned_employee_id"  widget="many2many_tags"/>
                 <field name="start_date"/>
                 <field name="due_date"/>
-                <field name="is_done"/>
+                <field name="is_done" widget="boolean_toggle"/>
             </tree>
         </field>
     </record>
@@ -36,11 +36,11 @@
         <field name="name">hotel.todo.calendar</field>
         <field name="model">hotel.todo</field>
         <field name="arch" type="xml">
-            <calendar string="To-Do Calendar" date_start="start_date" date_stop="due_date">
+            <calendar string="To-Do Calendar" date_start="start_date" date_stop="due_date" color = "is_done">
                 <field name="name"/>
                 <field name="due_date"/>
                 <field name="assigned_employee_id"/>
-                <field name="is_done"/>
+                <field name="is_done" widget="boolean_toggle"/>
             </calendar>
         </field>
     </record>

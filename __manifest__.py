@@ -16,5 +16,10 @@
     'views/hotel_employee_views.xml',
     'views/hotel_todo_views.xml',
     'data/hotel_employees.xml'
-    ] 
+    ] ,
+    'assets': {
+        'web.assets_backend': [
+            'HOTEL_MANAGEMENT/static/src/css/styles.css',
+        ],
+    }
 }

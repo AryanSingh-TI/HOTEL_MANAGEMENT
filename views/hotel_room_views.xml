@@ -8,7 +8,7 @@
                 <field name="floor_id"/>
                 <field name="room_type"/>
                 <field name="price"/>
-                <field name="availability"/>
+                <field name="availability" widget="statusbar"/>
                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator" name="booking_ids"/>
                 <field name="room_image" widget='image'/>
             </tree>
@@ -20,50 +20,67 @@
         <field name="model">hotel.room</field>
         <field name="arch" type="xml">
             <form>
+            <notebook>
+                <page string = "Basic Information">
                 <group>
-                    <field name="name"/>
-                    <field name="floor_id"/>
+                    <field name="name" class="form-control" placeholder="Type a Name"/>
+                    <field name="floor_id" class="form-control" placeholder="Enter the Room Name"/>
+                    <field name="room_type" class="form-control" placeholder="Enter the Room Type"/>
+                    <field name="price" class="form-control" placeholder="Enter a Price"/>
                 </group>
+                </page>
+                <page string = "Availability">
                 <group>
-                    <field name="room_type"/>
-                    <field name="price"/>
-                    <field name="availability"/>
-                    <field groups="HOTEL_MANAGEMENT.group_hotel_administrator" name="booking_ids"/>
-                    <field name="room_image" widget='image'/>
+                    <field name="availability" widget="statusbar" class="form-control"/>
                 </group>
+                </page>
+                <page string = "Booking records">
+                <group>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator" name="booking_ids" class="form-control"/>
+                </group>
+                </page>
+                <page string = "Preview">
+                <group>
+                <field name="room_image" widget='image' class="form-control"/>
+                </group>
+                </page>
+            </notebook>
             </form>
         </field>
     </record>
     
     <record id="view_hotel_room_kanban" model="ir.ui.view">
-        <field name="name">hotel.room.kanban</field>
-        <field name="model">hotel.room</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="name"/>
-                <field name="floor_id"/>
-                <field name="room_type"/>
-                <field name="price"/>
-                <field name="availability"/>
-                <field name="room_image" widget='image'/>
+    <field name="name">hotel.room.kanban</field>
+    <field name="model">hotel.room</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="name"/>
+            <field name="floor_id"/>
+            <field name="room_type"/>
+            <field name="price"/>
+            <field name="availability" widget="statusbar"/>
+            <field name="room_image" widget='image'/>
 
-                <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click oe_kanban_card oe_kanban_{availability}">
-                            <div class="oe_kanban_details">
-                                <strong><field name="name"/></strong>
-                                <div><field name="room_type"/></div>
-                                <div><field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/></div>
-                                <div t-attf-class="oe_kanban_inline oe_kanban_{availability}">
-                                    <span class="badge" t-esc="record.availability.value"/>
-                                </div>
-                                <div><field name="room_image" widget='image'></field></div>
+            <templates>
+                <t t-name="kanban-box">
+                    <t t-set="available" t-value="record.availability"/>
+                    <div t-attf-class="oe_kanban_global_click oe_kanban_card oe_kanban_{available}">
+                        <div class="oe_kanban_details">
+                            <strong><field name="name"/></strong>
+                            <div><field name="room_type"/></div>
+                            <div><field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/></div>
+                            <div t-attf-class="oe_kanban_inline oe_kanban_{available}">
+                                <span class="badge" t-esc="record.availability.value"/>
+                            </div>
+                            <div>
+                                <field name="room_image" widget='image'/>
                             </div>
                         </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
     </record>
 
     <record id="view_hotel_room_search" model="ir.ui.view">
@@ -75,7 +92,7 @@
                 <field name="floor_id"/>
                 <field name="room_type"/>
                 <field name="price"/>
-                <field name="availability"/>
+                <field name="availability" widget="statusbar"/>
     
                 <group string="Group By">
                     <filter string="Customer" name="group_floor" context="{'group_by': 'floor_id'}" />

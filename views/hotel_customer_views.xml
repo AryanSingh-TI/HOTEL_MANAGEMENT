@@ -5,7 +5,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="contact_info"/>
+                <field name="contact_info" widget="phone"/>
                 <field name="booking_ids"/>
             </tree>
         </field>
@@ -16,11 +16,19 @@
         <field name="model">hotel.customer</field>
         <field name="arch" type="xml">
             <form>
+            <notebook>
+                <page string = "General Information">
                 <group>
-                    <field name="name"/>
-                    <field name="contact_info"/>
+                    <field name="name" class="form-control" placeholder="Enter a Name"/>
+                    <field name="contact_info" widget="phone" class="form-control" placeholder="Enter the Contact Info"/>
+                </group>
+                </page>
+                <page string = "Booking Records"  class="form-control" >
+                <group>
                     <field name="booking_ids"/>
                 </group>
+                </page>
+            </notebook>
             </form>
         </field>
     </record>
