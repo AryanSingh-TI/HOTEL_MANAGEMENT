@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_hotel_customer_rating_form" model="ir.ui.view">
+        <field name="name">hotel.customer.rating.form</field>
+        <field name="model">hotel.rating</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="customer_id"/>
+                    <field name="room_id"/>
+                </group>
+                <group>
+                    <field name="rating" placeholder="Etner a rating from 1 to 10"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_customer_rating_action" model="ir.actions.act_window">
+        <field name="name">Rate Rooms</field>
+        <field name="res_model">hotel.rating</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_hotel_customer_rating_form"/>
+    </record>
+
+    <menuitem id="hotel_customer_rating_menu" 
+              name="Rate a Room" 
+              parent="hotel_management_root"
+              action="hotel_customer_rating_action" 
+              groups="HOTEL_MANAGEMENT.group_hotel_customer"/>
+</odoo>

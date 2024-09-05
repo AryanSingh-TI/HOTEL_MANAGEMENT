@@ -1,11 +1,18 @@
-/* Available room styles */
+/* Style for available rooms */
 .oe_kanban_available {
-    border: 2px solid green;
-    background-color: #e0f7e0;
+    background-color: #d4edda; /* Light green background */
+    border-left: 4px solid #28a745; /* Green left border */
 }
 
-/* Occupied room styles */
+/* Style for occupied rooms */
 .oe_kanban_occupied {
-    border: 2px solid red;
-    background-color: #f7e0e0;
+    background-color: #f8d7da; /* Light red background */
+    border-left: 4px solid #dc3545; /* Red left border */
+}
+
+/* Additional styling for the room image */
+.oe_kanban_card .oe_kanban_details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

@@ -32,4 +32,23 @@ class HotelRoom(models.Model):
                 if booking.check_in_date <= today and today <= booking.check_out_date:
                     room.availability = 'occupied'
                     break
-        
+    
+
+    rating_of_the_room =  fields.One2many('hotel.rating','room_id',string="Rating")
+    average_rating = fields.Float(compute='compute_average_rating',string="Ratings")
+
+    @api.depends('rating_of_the_room.rating')
+    def compute_average_rating(self):
+        for room in self:
+            total_rating = 0
+            total_rating_sum = 0
+            for ratings in room.rating_of_the_room:
+                total_rating += 1
+                total_rating_sum += ratings.rating
+            if total_rating:
+                room.average_rating = total_rating_sum / total_rating
+            else:
+                room.average_rating = 0
+
+
+

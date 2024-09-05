@@ -4,3 +4,4 @@ from . import customer
 from . import booking
 from . import employee
 from . import todo
+from . import ratings

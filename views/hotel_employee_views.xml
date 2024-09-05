@@ -9,7 +9,7 @@
                 <field name="default_salary"/>
                 <field name="role_id"/>
                 <field name="sub_role_id"/>
-                <field name="ratings" widget="priority"/>
+                <field name="ratings" widget="priority" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
             </tree>
         </field>
     </record>
@@ -30,7 +30,7 @@
                 <group>
                     <field name="role_id" class="form-control" placeholder="Select a Role"/>
                     <field name="sub_role_id" class="form-control" placeholder="Select a Sub-Role"/>
-                    <field name="ratings" widget="priority" class="form-control" placeholder="Choose a Rating"/>
+                    <field name="ratings" widget="priority" class="form-control" placeholder="Choose a Rating" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                 </group>
                 </page>
                 <page string = "Document Information">

@@ -3,10 +3,15 @@
         <field name="name">hotel.customer.tree</field>
         <field name="model">hotel.customer</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="contact_info" widget="phone"/>
-                <field name="booking_ids"/>
+        <tree>
+        <header>
+            <button name="perform_clean_up" string="Clean Up" type="object" class="btn-warning"/>
+            <button name="perform_verification" string="Verify" type="object" class="btn-success"/>
+        </header>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="name"/>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="contact_info" widget="phone"/>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="booking_ids"/>
+                <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="is_verified"/>
             </tree>
         </field>
     </record>
@@ -19,13 +24,14 @@
             <notebook>
                 <page string = "General Information">
                 <group>
-                    <field name="name" class="form-control" placeholder="Enter a Name"/>
+                    <field  name="name" class="form-control" placeholder="Enter a Name"/>
                     <field name="contact_info" widget="phone" class="form-control" placeholder="Enter the Contact Info"/>
                 </group>
                 </page>
                 <page string = "Booking Records"  class="form-control" >
                 <group>
                     <field name="booking_ids"/>
+                    <field name="is_verified"/>
                 </group>
                 </page>
             </notebook>
@@ -45,9 +51,8 @@
         </field>
     </record>
     
-    <menuitem id="hotel_management_root" name="Hotel Management"/>
 
-    <menuitem id="hotel_management_menu_customers" name="Customers" parent="hotel_management_root"/>
+    <menuitem id="hotel_management_menu_customers" groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="Customers" parent="hotel_management_root"/>
 
-    <menuitem id="hotel_management_menu_customers_view" name="Manage Customers" parent="hotel_management_menu_customers" action="hotel_management_customer_action"/>
+    <menuitem id="hotel_management_menu_customers_view" groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="Manage Customers" parent="hotel_management_menu_customers" action="hotel_management_customer_action"/>
 </odoo>

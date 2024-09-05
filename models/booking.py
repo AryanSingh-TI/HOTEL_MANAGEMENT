@@ -14,16 +14,16 @@ class HotelBooking(models.Model):
     total_booking_price = fields.Monetary(string="Total Booking Price" , compute = '_compute_total_booking_price' , currency_field='currency_id',store=True)
     currency_id = fields.Many2one('res.currency',string = "Currency")
 
-    days_count = fields.Integer(string='Number of Days', compute='_compute_days_count', store=True)
+    days_count = fields.Integer(string='Number of Days', compute='_compute_days_count',store=True)
 
     @api.depends('check_in_date', 'check_out_date')
     def _compute_days_count(self):
         for record in self:
-            if record.check_in_date and record.check_out_date and (record.check_in_date < record.check_out_date):
+            if record.check_in_date and record.check_out_date and (record.check_in_date <= record.check_out_date):
                 check_in = record.check_in_date
                 check_out = record.check_out_date
                 delta = check_out - check_in
-                record.days_count = delta.days
+                record.days_count = delta.days + 1
             else:
                 record.days_count = 0
 
@@ -56,7 +56,7 @@ class HotelBooking(models.Model):
         for record in self:
             if record.check_out_date < record.check_in_date:
                 raise ValidationError(_("Check out Date cannot be before the check in date, Please select a valid date!"))
-        
+    
     
 
             
