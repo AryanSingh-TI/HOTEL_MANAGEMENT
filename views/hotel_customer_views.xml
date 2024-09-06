@@ -7,11 +7,13 @@
         <header>
             <button name="perform_clean_up" string="Clean Up" type="object" class="btn-warning"/>
             <button name="perform_verification" string="Verify" type="object" class="btn-success"/>
+            <!-- <button name="action_merge_customers" type="object" string="Merge Duplicate Customers" class="oe_highlight" /> -->
         </header>
                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="name"/>
                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="contact_info" widget="phone"/>
                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="booking_ids"/>
                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="is_verified"/>
+                 <field groups="HOTEL_MANAGEMENT.group_hotel_administrator,HOTEL_MANAGEMENT.group_hotel_employee" name="customer_ratings"/>
             </tree>
         </field>
     </record>
@@ -32,6 +34,7 @@
                 <group>
                     <field name="booking_ids"/>
                     <field name="is_verified"/>
+                    <field name="customer_ratings"/>
                 </group>
                 </page>
             </notebook>

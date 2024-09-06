@@ -10,3 +10,5 @@ class HotelTodo(models.Model):
     start_date = fields.Date(string="Start Date")
     due_date = fields.Date(string="Due Date")
     is_done = fields.Boolean(string="Done", default=False)
+
+    

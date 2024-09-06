@@ -8,18 +8,16 @@
                 <sheet>
                     <group>
                         <field name="name" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
-                        <field name="description" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                         <field name="assigned_employee_id"  widget="many2many_tags" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                         <field name="start_date" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                         <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                         <field name="is_done" widget="boolean_toggle" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
 
-                        <field name="name" readonly="1"/>
-                        <field name="description" readonly="1"/>
-                        <field name="assigned_employee_id" widget="many2many_checkboxes" readonly="1"/>
-                        <field name="start_date" readonly="1"/>
-                        <field name="due_date" readonly="1"/>
-                        <field name="is_done" widget="boolean_toggle"/>
+                        <field name="name" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                        <field name="assigned_employee_id" groups="HOTEL_MANAGEMENT.group_hotel_employee"  widget="many2many_tags" readonly="1"/>
+                        <field name="start_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                        <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                        <field name="is_done" groups="HOTEL_MANAGEMENT.group_hotel_employee"  widget="boolean_toggle"/>
                     </group>
                 </sheet>
             </form>
@@ -36,11 +34,11 @@
                 <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
                 <field name="is_done" widget="boolean_toggle" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
 
-                <field name="name" readonly="1"/>
-                <field name="assigned_employee_id"  widget="many2many_tags" readonly="1"/>
-                <field name="start_date" readonly="1"/>
-                <field name="due_date" readonly="1"/>
-                <field name="is_done" widget="boolean_toggle"/>
+                <field name="name" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="assigned_employee_id" groups="HOTEL_MANAGEMENT.group_hotel_employee"  widget="many2many_tags" readonly="1"/>
+                <field name="start_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="is_done" groups="HOTEL_MANAGEMENT.group_hotel_employee" widget="boolean_toggle"/>
             </tree>
         </field>
     </record>
@@ -50,10 +48,17 @@
         <field name="model">hotel.todo</field>
         <field name="arch" type="xml">
             <calendar string="To-Do Calendar" date_start="start_date" date_stop="due_date" color = "is_done">
-                <field name="name"/>
-                <field name="due_date"/>
-                <field name="assigned_employee_id"/>
-                <field name="is_done" widget="boolean_toggle"/>
+                <field name="name" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
+                <field name="assigned_employee_id"  widget="many2many_tags" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
+                <field name="start_date" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
+                <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
+                <field name="is_done" widget="boolean_toggle" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
+
+                <field name="name" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="assigned_employee_id" groups="HOTEL_MANAGEMENT.group_hotel_employee"  widget="many2many_tags" readonly="1"/>
+                <field name="start_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="due_date" groups="HOTEL_MANAGEMENT.group_hotel_employee" readonly="1"/>
+                <field name="is_done" groups="HOTEL_MANAGEMENT.group_hotel_employee"  widget="boolean_toggle"/>
             </calendar>
         </field>
     </record>
