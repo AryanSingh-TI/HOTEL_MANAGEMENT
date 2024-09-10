@@ -34,6 +34,6 @@ class HotelEmployee(models.Model):
         ], string="Performance Rating", default='0')
     
     employee_document = fields.Binary(string='Employee Document')
-
+    attendance =  fields.One2many('hotel.attendance','employee_id',string='Attendance',readonly=True)
 
     

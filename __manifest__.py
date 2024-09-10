@@ -18,6 +18,8 @@
     'views/hotel_customer_booking.xml',
     'views/hotel_rating_customer.xml',
     'views/hotel_rating_admin.xml',
+    'views/hotel_attendance_employee.xml',
+    'views/hotel_attendance_admin.xml',
     'data/hotel_employees.xml'
     ] ,
     'assets': {

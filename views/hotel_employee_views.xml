@@ -9,6 +9,7 @@
                 <field name="default_salary"/>
                 <field name="role_id"/>
                 <field name="sub_role_id"/>
+                <field name="attendance"/>
                 <field name="ratings" widget="priority" groups="HOTEL_MANAGEMENT.group_hotel_administrator"/>
             </tree>
         </field>
@@ -36,6 +37,11 @@
                 <page string = "Document Information">
                 <group>
                     <field name="employee_document" widget="image"/>
+                </group>
+                </page>
+                <page string = "Attendance">
+                <group>
+                    <field name="attendance"/>
                 </group>
                 </page>
                 </notebook>

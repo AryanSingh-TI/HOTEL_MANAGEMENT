@@ -5,3 +5,5 @@ from . import booking
 from . import employee
 from . import todo
 from . import ratings
+from . import attendance
+from . import inherit_todo

@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="view_form_hotel_employee_attendance" model = "ir.ui.view">
+        <field name="name">hotel.employee.attendance.form</field>
+        <field name="model">hotel.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="check_in_the_employee" string="Check In" type="object" class="btn-success"/>
+                    <button name="check_out_the_employee" string="Check Out" type="object" class="btn-danger"/>
+                </header>
+                <group>
+                    <field name="employee_id"/>
+                </group>
+                <group>
+                    <field name="date"/>
+                    <field name="check_in_time"/>
+                    <field name="check_out_time"/>
+                    <field name="is_present"/>
+                    <field name="time_spent"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="hotel_employee_attendance_action" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">hotel.attendance</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_hotel_employee_attendance"/>
+    </record>
+
+    <menuitem id="hotel_employee_attendance_menu"
+              name="Attendance"
+              parent="hotel_management_root"
+              action="hotel_employee_attendance_action"
+              groups="HOTEL_MANAGEMENT.group_hotel_employee"/>
+
+
+</odoo>

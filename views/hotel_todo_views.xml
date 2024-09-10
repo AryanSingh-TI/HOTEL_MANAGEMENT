@@ -63,6 +63,26 @@
         </field>
     </record>
 
+    <record id="view_inherit_todo" model="ir.ui.view">
+        <field name="name">hotel.todo.inherit</field>
+        <field name="model">hotel.todo</field>
+        <field name="inherit_id" ref="view_hotel_todo_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form/sheet/group[1]/field[@name='assigned_employee_id']" position="after">
+                <xpath expr="//field[@name='name']" position="move"/>
+            </xpath>
+            
+            <xpath expr="//form/sheet/group[1]" position="inside"> 
+                <field name="description"/>
+            </xpath> 
+            <xpath expr="//field[@name='start_date']" position="after">
+                <field name="priority"/>
+            </xpath>
+        </field>
+            
+    </record>
+
     <record id="action_hotel_todo_calendar" model="ir.actions.act_window">
         <field name="name">To-Do Calendar</field>
         <field name="res_model">hotel.todo</field>
